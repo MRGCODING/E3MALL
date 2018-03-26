@@ -54,7 +54,7 @@ public class TestSolrJ {
 		// 取文档列表。取查询结果的总记录数
 		SolrDocumentList solrDocumentList = queryResponse.getResults();
 		System.out.println("查询结果总记录数：" + solrDocumentList.getNumFound());
-		// 遍历文档列表，从取域的内容。
+		// 遍历文档列表，从取域的内容 。
 		for (SolrDocument solrDocument : solrDocumentList) {
 			System.out.println(solrDocument.get("id"));
 			System.out.println(solrDocument.get("item_title"));

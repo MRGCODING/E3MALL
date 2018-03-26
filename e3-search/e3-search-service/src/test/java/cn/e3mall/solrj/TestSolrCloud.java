@@ -31,7 +31,7 @@ public class TestSolrCloud {
 	}
 	
 	@Test
-	public void testQueryDocument() throws Exception {
+	public void  () throws Exception {
 		//创建一个CloudSolrServer对象
 		CloudSolrServer cloudSolrServer = new CloudSolrServer("192.168.25.163:2181,192.168.25.163:2182,192.168.25.163:2183");
 		//设置默认的Collection
