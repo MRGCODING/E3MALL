@@ -9,7 +9,8 @@
   <artifactId>e3-sso-web</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <dependencies>
+  
+    <dependencies>
 		<dependency>
 			<groupId>cn.e3mall</groupId>
 			<artifactId>e3-sso-interface</artifactId>

@@ -19,16 +19,16 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<!-- 配置拦截器 -->
+	<!-- 拦截器配置 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="cn.e3mall.order.interceptor.LoginInterceptor"></bean>
+			<bean class="cn.e3mall.order.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="e3-order-web"/>
-	<dubbo:registry protocol="zookeeper" address="192.168.25.160:2181"/>	
+	<dubbo:registry protocol="zookeeper" address="115.159.126.205:2181"/>
 	<dubbo:reference interface="cn.e3mall.cart.service.CartService" id="cartService" />
 	<dubbo:reference interface="cn.e3mall.sso.service.TokenService" id="tokenService" />
 	<dubbo:reference interface="cn.e3mall.order.service.OrderService" id="orderService" />

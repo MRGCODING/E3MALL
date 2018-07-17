@@ -43,19 +43,6 @@ public class SearchDao {
 		SolrDocumentList solrDocumentList = queryResponse.getResults();
 		//取查询结果总记录数
 		long numFound = solrDocumentList.getNumFound();
-		/**
-		 * 
-			private long recordCount;
-			private int totalPages;
-			private List<SearchItem> itemList;
-			----------------------------------
-			private String id;
-			private String title;
-			private String sell_point;
-			private long price;
-			private String image;
-			private String category_name;
-		 */
 		SearchResult result = new SearchResult();
 		result.setRecordCount(numFound);
 		//取商品列表，需要取高亮显示

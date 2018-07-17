@@ -44,6 +44,7 @@ public class HtmlGenListener implements MessageListener {
 			TextMessage textMessage = (TextMessage) message;
 			String text = textMessage.getText();
 			Long itemId = new Long(text);
+			System.out.println("接收到消息,去创建静态模板:"+itemId);
 			//等待事务提交
 			Thread.sleep(1000);
 			//根据商品id查询商品信息，商品基本信息和商品描述。
@@ -52,7 +53,7 @@ public class HtmlGenListener implements MessageListener {
 			//取商品描述
 			TbItemDesc itemDesc = itemService.getItemDescById(itemId);
 			//创建一个数据集，把商品数据封装
-			Map data = new HashMap<>();
+			Map<Object,Object> data = new HashMap<>();
 			data.put("item", item);
 			data.put("itemDesc", itemDesc);
 			//加载模板对象
@@ -66,7 +67,7 @@ public class HtmlGenListener implements MessageListener {
 			out.close();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			// TODO: handle exception
 		}
 
 	}

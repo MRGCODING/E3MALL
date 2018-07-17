@@ -67,6 +67,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		contentCategory.setUpdated(new Date());
 		//插入到数据库
 		contentCategoryMapper.insert(contentCategory);
+		System.out.println("返回的id:"+contentCategory.getId());
 		//判断父节点的isparent属性。如果不是true改为true
 		//根据parentid查询父节点
 		TbContentCategory parent = contentCategoryMapper.selectByPrimaryKey(parentId);
@@ -77,6 +78,47 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 		}
 		//返回结果，返回E3Result，包含pojo
 		return E3Result.ok(contentCategory);
+	}
+
+	/**
+	 * 更新分类节点
+	 */
+	@Override
+	public E3Result updateContentCategory(long id, String name) {
+		//创建一个tb_content_category表对应的pojo对象
+		TbContentCategory contentCategory = new TbContentCategory();
+		//设置pojo的属性
+		contentCategory.setId(id);
+		contentCategory.setName(name);
+		contentCategory.setUpdated(new Date());
+		//插入到数据库
+		contentCategoryMapper.updateByPrimaryKeySelective(contentCategory);
+		//返回结果，返回E3Result
+		return E3Result.ok();
+	}
+
+	
+	/**
+	 * 删除分类节点
+	 */
+	@Override
+	public E3Result deleteContentCategory(long id) {
+		
+		TbContentCategory tb = contentCategoryMapper.selectByPrimaryKey(id);
+		if(tb.getIsParent()) {
+			return E3Result.build(500,"该节点为父节点，无法删除");
+		}	
+		//创建一个tb_content_category表对应的pojo对象
+		TbContentCategory contentCategory = new TbContentCategory();
+		//设置pojo的属性
+		//1(正常),2(删除)
+		contentCategory.setId(id);
+		contentCategory.setStatus(2);
+		contentCategory.setUpdated(new Date());
+		//插入到数据库
+		contentCategoryMapper.updateByPrimaryKeySelective(contentCategory);
+		//返回结果，返回E3Result，包含pojo
+		return E3Result.ok();
 	}
 
 }

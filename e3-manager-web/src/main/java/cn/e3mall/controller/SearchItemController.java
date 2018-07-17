@@ -26,6 +26,5 @@ public class SearchItemController {
 	public E3Result importItemList() {
 		E3Result e3Result = searchItemService.importAllItems();
 		return e3Result;
-		
 	}
 }

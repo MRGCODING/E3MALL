@@ -20,7 +20,8 @@
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> 
+	</filter-mapping>
+
 
 	<!-- springmvc的前端控制器 -->
 	<servlet>
@@ -35,7 +36,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>e3-portal-web</servlet-name>
-		<!-- 伪静态化 -->
+		<!-- 伪静态化  搜索引擎 -->
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 </web-app>

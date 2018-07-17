@@ -13,13 +13,10 @@ public class MyMessageListener implements MessageListener {
 		TextMessage textMessage = (TextMessage) message;
 		try {
 			String text = textMessage.getText();
-			System.out.println(text);
+			System.out.println("获取消息"+text);
 		} catch (JMSException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 }

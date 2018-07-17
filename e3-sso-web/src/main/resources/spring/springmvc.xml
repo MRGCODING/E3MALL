@@ -22,10 +22,11 @@
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/images/" mapping="/images/**"/>
+	
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="e3-sso-web"/>
-	<dubbo:registry protocol="zookeeper" address="192.168.25.160:2181"/>	
-	<dubbo:reference interface="cn.e3mall.sso.service.RegisterService" id="registerService" />
-	<dubbo:reference interface="cn.e3mall.sso.service.LoginService" id="loginService" />
-	<dubbo:reference interface="cn.e3mall.sso.service.TokenService" id="tokenService" />
+	<dubbo:registry protocol="zookeeper" address="115.159.126.205:2181"/>	
+	<dubbo:reference interface="cn.e3mall.sso.service.LoginService" id="loginService"/> 
+	<dubbo:reference interface="cn.e3mall.sso.service.RegisterService" id="registerService"/> 
+	<dubbo:reference interface="cn.e3mall.sso.service.TokenService" id="tokenService"/> 
 </beans>

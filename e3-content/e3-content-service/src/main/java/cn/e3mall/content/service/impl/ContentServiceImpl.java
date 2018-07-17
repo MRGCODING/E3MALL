@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
 import cn.e3mall.common.jedis.JedisClient;
+import cn.e3mall.common.pojo.EasyUIDataGridResult;
 import cn.e3mall.common.utils.E3Result;
 import cn.e3mall.common.utils.JsonUtils;
 import cn.e3mall.content.service.ContentService;
@@ -62,7 +66,8 @@ public class ContentServiceImpl implements ContentService {
 			//如果缓存中有直接响应结果
 			String json = jedisClient.hget(CONTENT_LIST, cid + "");
 			if (StringUtils.isNotBlank(json)) {
-				List<TbContent> list = JsonUtils.jsonToList(json, TbContent.class);
+				List<TbContent> list = JsonUtils.jsonToList(json,TbContent.class);
+				System.out.println("从缓存中查出的数据");
 				return list;
 			}
 		} catch (Exception e) {
@@ -77,11 +82,53 @@ public class ContentServiceImpl implements ContentService {
 		List<TbContent> list = contentMapper.selectByExampleWithBLOBs(example);
 		//把结果添加到缓存
 		try {
+			System.out.println("把结果添加到缓存");
 			jedisClient.hset(CONTENT_LIST, cid + "", JsonUtils.objectToJson(list));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public EasyUIDataGridResult getContentList(Long categoryId, Integer page, Integer rows) {
+		//设置分页信息
+		PageHelper.startPage(page,rows);
+		//执行查询
+		TbContentExample example = new TbContentExample();
+		example.createCriteria().andCategoryIdEqualTo(categoryId);
+		List<TbContent> list = contentMapper.selectByExample(example);
+		//创建一个返回值对象
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		//取分页结果
+		result.setRows(list);
+		PageInfo<TbContent> pageInfo = new PageInfo<>(list);
+		//取总记录数
+		long total = pageInfo.getTotal();
+		result.setTotal(total);
+		return result;
+	}
+
+	@Override
+	public E3Result delContent(String params) {
+		String [] ids = params.substring(4).split("%2C");
+		int i=0;
+		for(String id:ids) {
+			i = contentMapper.deleteByPrimaryKey(Long.valueOf(id));
+		}
+		if(i>0) {
+			return E3Result.ok();
+		}
+		
+		return E3Result.build(500,"ERR");
+	}
+
+	@Override
+	public E3Result updateContent(TbContent content) {
+		content.setUpdated(new Date());
+		contentMapper.updateByPrimaryKeySelective(content);
+		jedisClient.hdel(CONTENT_LIST, content.getCategoryId().toString());
+		return E3Result.ok();
 	}
 
 }

@@ -106,10 +106,10 @@
 		   	  </div>   
  	</div>
       <ul class="none" id="lunboNum">
-      			<c:forEach items="${ad1List }" varStatus="status">
+      		<c:forEach items="${ad1List }" varStatus="status">
       			<li class="<c:if test="${status.index==0 }">cur</c:if>">${status.index+1 }</li>
-      			</c:forEach>
-		        <!-- <li class="cur">1</li>
+      		</c:forEach>
+		       <!--  <li class="cur">1</li>
 		        <li class="">2</li>
 		        <li class="">3</li>
 		        <li class="">4</li>

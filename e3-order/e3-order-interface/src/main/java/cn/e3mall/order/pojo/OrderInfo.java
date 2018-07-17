@@ -8,7 +8,7 @@ import cn.e3mall.pojo.TbOrderItem;
 import cn.e3mall.pojo.TbOrderShipping;
 
 public class OrderInfo extends TbOrder implements Serializable {
-
+	private static final long serialVersionUID = 1L;
 	private List<TbOrderItem> orderItems;
 	private TbOrderShipping orderShipping;
 	public List<TbOrderItem> getOrderItems() {
@@ -23,5 +23,4 @@ public class OrderInfo extends TbOrder implements Serializable {
 	public void setOrderShipping(TbOrderShipping orderShipping) {
 		this.orderShipping = orderShipping;
 	}
-	
 }

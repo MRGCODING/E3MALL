@@ -32,8 +32,9 @@ public class LoginController {
 	private String TOKEN_KEY;
 	
 	@RequestMapping("/page/login")
-	public String showLogin(String redirect, Model model) {
-		model.addAttribute("redirect", redirect);
+	public String showLogin(String redirect,Model model) {
+		System.out.println("回调url"+redirect);
+		model.addAttribute("redirect",redirect);
 		return "login";
 	}
 	
@@ -46,6 +47,7 @@ public class LoginController {
 		if(e3Result.getStatus() == 200) {
 			String token = e3Result.getData().toString();
 			//如果登录成功需要把token写入cookie
+			System.out.println("token:"+token);
 			CookieUtils.setCookie(request, response, TOKEN_KEY, token);
 		}
 		//返回结果

@@ -1,24 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
+<parent>
 		<groupId>cn.e3mall</groupId>
 		<artifactId>e3-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
 	<artifactId>e3-manager-web</artifactId>
 	<packaging>war</packaging>
 	<dependencies>
-		<dependency>
-			<groupId>cn.e3mall</groupId>
-			<artifactId>e3-manager-interface</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>cn.e3mall</groupId>
 			<artifactId>e3-content-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- 内容服务接口 -->
+		<dependency>
+			<groupId>cn.e3mall</groupId>
+			<artifactId>e3-manager-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- solr服务接口 -->
 		<dependency>
 			<groupId>cn.e3mall</groupId>
 			<artifactId>e3-search-interface</artifactId>
@@ -53,6 +57,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
+
 		<!-- JSP相关 -->
 		<dependency>
 			<groupId>jstl</groupId>
@@ -100,6 +105,12 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 		</dependency>
+		<!-- fastDfs -->
+		<dependency>
+		 	<groupId>fastdfs_client</groupId>
+  			<artifactId>fastdfs_client</artifactId>
+  			<version>1.25</version>
+		</dependency>
 	</dependencies>
 	<!-- 配置tomcat插件 -->
 	<build>
@@ -112,6 +123,14 @@
 					<port>8081</port>
 				</configuration>
 			</plugin>
+			<plugin>    
+       		 <groupId>org.apache.maven.plugins</groupId>    
+        	 <artifactId>maven-surefire-plugin</artifactId>    
+             <version>2.18.1</version>    
+             <configuration>    
+                <skipTests>true</skipTests>    
+             </configuration>    
+            </plugin>    
 		</plugins>
 	</build>
 </project>

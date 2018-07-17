@@ -13,24 +13,12 @@
   	<module>e3-order-interface</module>
   	<module>e3-order-service</module>
   </modules>
+  
   <dependencies>
-		<dependency>
-			<groupId>cn.e3mall</groupId>
-			<artifactId>e3-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
-	<!-- 配置tomcat插件 -->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<configuration>
-					<path>/</path>
-					<port>8091</port>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+  	<dependency>
+  		<groupId>cn.e3mall</groupId>
+  		<artifactId>e3-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

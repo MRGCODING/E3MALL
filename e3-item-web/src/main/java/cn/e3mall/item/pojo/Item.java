@@ -1,13 +1,9 @@
 package cn.e3mall.item.pojo;
 
-import java.io.Serializable;
-
 import cn.e3mall.pojo.TbItem;
 
-public class Item extends TbItem implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
+public class Item extends TbItem {
+	
 	public Item(TbItem tbItem) {
 		this.setId(tbItem.getId());
 		this.setTitle(tbItem.getTitle());
@@ -24,9 +20,9 @@ public class Item extends TbItem implements Serializable {
 
 	public String[] getImages() {
 		String image2 = this.getImage();
-		if (null != image2 && !"".equals(image2)) {
-			String[] split = image2.split(",");
-			return split;
+		if (image2 != null && !"".equals(image2)) {
+			String[] strings = image2.split(",");
+			return strings;
 		}
 		return null;
 	}

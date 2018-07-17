@@ -32,6 +32,7 @@ public class ItemAddMessageListener implements MessageListener {
 			TextMessage textMessage = (TextMessage) message;
 			String text = textMessage.getText();
 			Long itemId = new Long(text);
+			System.out.println("获取的id为"+itemId);
 			//等待事务提交
 			Thread.sleep(1000);
 			//根据商品id查询商品信息

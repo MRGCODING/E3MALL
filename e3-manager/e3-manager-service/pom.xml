@@ -52,6 +52,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
+			<!-- 排除jar包，防止冲突 -->
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>
@@ -72,8 +73,15 @@
 			<artifactId>zkclient</artifactId>
 		</dependency>
 		<dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.12</version>
+        </dependency>
+        <!-- activemq -->
+        <dependency>
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-all</artifactId>
+			<version>5.11.2</version>
 		</dependency>
 	</dependencies>
 </project>

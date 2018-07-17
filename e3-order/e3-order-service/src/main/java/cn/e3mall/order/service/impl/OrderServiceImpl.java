@@ -3,7 +3,6 @@ package cn.e3mall.order.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,13 +16,10 @@ import cn.e3mall.order.pojo.OrderInfo;
 import cn.e3mall.order.service.OrderService;
 import cn.e3mall.pojo.TbOrderItem;
 import cn.e3mall.pojo.TbOrderShipping;
-
 /**
  * 订单处理服务
- * <p>Title: OrderServiceImpl</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.cn</p> 
- * @version 1.0
+ * @author cxx
+ *
  */
 @Service
 public class OrderServiceImpl implements OrderService {

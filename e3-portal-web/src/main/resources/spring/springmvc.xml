@@ -12,7 +12,7 @@
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:conf/resource.properties" />
 	
-	<context:component-scan base-package="cn.e3mall.portal.controller" />
+	<context:component-scan base-package="cn.e3mall.protal.controller" />
 	<mvc:annotation-driven />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -21,6 +21,6 @@
 	</bean>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="e3-portal-web"/>
-	<dubbo:registry protocol="zookeeper" address="192.168.25.160:2181"/>	
+	<dubbo:registry protocol="zookeeper" address="115.159.126.205:2181"/>
 	<dubbo:reference interface="cn.e3mall.content.service.ContentService" id="contentService" />
 </beans>
